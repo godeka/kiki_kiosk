@@ -2,6 +2,7 @@ import { Box, Typography, Grid } from "@mui/material";
 import { Storefront, ExitToApp } from "@mui/icons-material";
 
 import GoBackButton from "./button/GoBackButton";
+import BoxButton from "./button/BoxButton";
 
 export default function InOutScreen() {
   return (
@@ -22,38 +23,14 @@ export default function InOutScreen() {
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <Box
-            sx={{
-              width: "150px",
-              height: "150px",
-              border: "2px solid black",
-              borderRadius: "15px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <BoxButton text="매장">
             <Storefront style={{ fontSize: "70px" }} />
-            <Typography variant="h6">매장</Typography>
-          </Box>
+          </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <Box
-            sx={{
-              width: "150px",
-              height: "150px",
-              border: "2px solid black",
-              borderRadius: "15px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
+          <BoxButton text="포장">
             <ExitToApp style={{ fontSize: "70px" }} />
-            <Typography variant="h6">포장</Typography>
-          </Box>
+          </BoxButton>
         </Grid>
       </Grid>
     </Box>
