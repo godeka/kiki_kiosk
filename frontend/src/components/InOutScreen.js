@@ -10,11 +10,13 @@ export default function InOutScreen() {
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "space-around",
       }}
     >
       <GoBackButton />
-      <Typography variant="h3" style={{ fontSize: "30px" }}>
+      <Typography
+        variant="h3"
+        style={{ marginTop: "50px", marginBottom: "120px", fontSize: "30px" }}
+      >
         매장에서 드실 건가요, <br />
         포장해가실 건가요?
       </Typography>
