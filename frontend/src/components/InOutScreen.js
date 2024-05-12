@@ -1,8 +1,9 @@
-import { Box, Typography, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { Storefront, ExitToApp } from "@mui/icons-material";
 
 import GoBackButton from "./button/GoBackButton";
 import BoxButton from "./button/BoxButton";
+import Question from "./Question";
 
 export default function InOutScreen() {
   return (
@@ -14,13 +15,10 @@ export default function InOutScreen() {
       }}
     >
       <GoBackButton />
-      <Typography
-        variant="h3"
-        style={{ marginTop: "50px", marginBottom: "120px", fontSize: "30px" }}
-      >
-        매장에서 드실 건가요, <br />
-        포장해가실 건가요?
-      </Typography>
+      <Question>
+        <span style={{ color: "black" }}>매장</span>에서 드실 건가요, <br />
+        <span style={{ color: "black" }}>포장</span>해가실 건가요?
+      </Question>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <BoxButton text="매장">
