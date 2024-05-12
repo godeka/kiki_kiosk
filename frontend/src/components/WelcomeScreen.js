@@ -1,8 +1,18 @@
-import { Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+
+import { Typography, Container } from "@mui/material";
 
 export default function WelcomeScreen() {
+  const navigate = useNavigate();
+
   return (
-    <>
+    <Container
+      sx={{
+        width: "100%",
+        height: "100%",
+      }}
+      onClick={() => navigate("/InOut")}
+    >
       <Typography variant="h3" style={{ color: "#FFFFFF", fontSize: "42px" }}>
         어서오세요, <br />
         키키 버거입니다.
@@ -11,6 +21,6 @@ export default function WelcomeScreen() {
         주문을 시작하려면 <br />
         화면을 터치해주세요.
       </Typography>
-    </>
+    </Container>
   );
 }
