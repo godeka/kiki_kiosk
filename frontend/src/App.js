@@ -1,4 +1,5 @@
 import { Container } from "@mui/material";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import WelcomeScreen from "./components/WelcomeScreen";
 
@@ -15,7 +16,11 @@ function App() {
         justifyContent: "space-around",
       }}
     >
-      <WelcomeScreen />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<WelcomeScreen />} />
+        </Routes>
+      </BrowserRouter>
     </Container>
   );
 }
