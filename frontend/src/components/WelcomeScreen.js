@@ -1,15 +1,18 @@
 import { useNavigate } from "react-router-dom";
 
-import { Typography, Container } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export default function WelcomeScreen() {
   const navigate = useNavigate();
 
   return (
-    <Container
+    <Box
       sx={{
         width: "100%",
         height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
       }}
       onClick={() => navigate("/InOut")}
     >
@@ -21,6 +24,6 @@ export default function WelcomeScreen() {
         주문을 시작하려면 <br />
         화면을 터치해주세요.
       </Typography>
-    </Container>
+    </Box>
   );
 }

@@ -12,9 +12,6 @@ function App() {
         padding: "50px",
         background: `linear-gradient(0deg, #FFFFFF, #FF1E97)`, // 그라데이션 배경
         height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-around",
       }}
     >
       <BrowserRouter>
