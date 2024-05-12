@@ -1,11 +1,18 @@
-import { Container, Typography, Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Storefront, ExitToApp } from "@mui/icons-material";
 
 import GoBackButton from "./button/GoBackButton";
 
 export default function InOutScreen() {
   return (
-    <Container>
+    <Box
+      sx={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-around",
+      }}
+    >
       <GoBackButton />
       <Typography variant="h3" style={{ fontSize: "30px" }}>
         매장에서 드실 건가요, <br />
@@ -41,6 +48,6 @@ export default function InOutScreen() {
         <ExitToApp style={{ fontSize: "70px" }} />
         <Typography variant="h6">포장</Typography>
       </Box>
-    </Container>
+    </Box>
   );
 }
