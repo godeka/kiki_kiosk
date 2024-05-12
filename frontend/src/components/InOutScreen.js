@@ -1,9 +1,12 @@
 import { Container, Typography, Box } from "@mui/material";
 import { Storefront, ExitToApp } from "@mui/icons-material";
 
+import GoBackButton from "./button/GoBackButton";
+
 export default function InOutScreen() {
   return (
     <Container>
+      <GoBackButton />
       <Typography variant="h3" style={{ fontSize: "30px" }}>
         매장에서 드실 건가요, <br />
         포장해가실 건가요?
