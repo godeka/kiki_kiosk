@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import WelcomeScreen from "./components/WelcomeScreen";
+import InOutScreen from "./components/InOutScreen";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/InOut" element={<InOutScreen />} />
         </Routes>
       </BrowserRouter>
     </Container>
