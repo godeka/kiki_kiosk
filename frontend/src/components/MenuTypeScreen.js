@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Grid } from "@mui/material";
 import { KebabDining, LunchDining, WineBar } from "@mui/icons-material";
 
@@ -6,6 +8,8 @@ import Question from "./Question";
 import BoxButton from "./button/BoxButton";
 
 export default function MenuTypeScreen() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -21,17 +25,26 @@ export default function MenuTypeScreen() {
       </Question>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <BoxButton text="햄버거">
+          <BoxButton
+            text="햄버거"
+            handleClick={() => navigate("/SelectBurger")}
+          >
             <LunchDining style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <BoxButton text="음료">
+          <BoxButton
+            text="음료"
+            handleClick={() => navigate("/SelectBeverage")}
+          >
             <WineBar style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <BoxButton text="곁들여먹는 음식">
+          <BoxButton
+            text="곁들여먹는 음식"
+            handleClick={() => navigate("/SelectSide")}
+          >
             <KebabDining style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
