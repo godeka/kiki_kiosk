@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import WelcomeScreen from "./components/WelcomeScreen";
 import InOutScreen from "./components/InOutScreen";
+import MenuTypeScreen from "./components/MenuTypeScreen";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/InOut" element={<InOutScreen />} />
+          <Route path="/MenuType" element={<MenuTypeScreen />} />
         </Routes>
       </BrowserRouter>
     </Container>
