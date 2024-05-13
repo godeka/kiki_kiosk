@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Container, Typography, Grid, Box } from "@mui/material";
 import { East } from "@mui/icons-material";
 
@@ -17,6 +19,8 @@ const sampleMenuList = [
 ]; // 메뉴 목록
 
 export default function SelectMenuScreen({ menuList = sampleMenuList }) {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <GoBackButton />
@@ -30,7 +34,12 @@ export default function SelectMenuScreen({ menuList = sampleMenuList }) {
           </Grid>
         ))}
       </Grid>
-      <Box position="fixed" top="80%" left="42%">
+      <Box
+        position="fixed"
+        top="80%"
+        left="42%"
+        onClick={() => navigate("/OrderCheck")}
+      >
         <Typography fontSize="20px">다음 단계로</Typography>
         <East style={{ fontSize: "20px" }} />
       </Box>
