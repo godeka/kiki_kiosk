@@ -7,6 +7,7 @@ import MenuTypeScreen from "./components/MenuTypeScreen";
 import LastCheckScreen from "./components/LastCheckScreen";
 import PaymentMethodScreen from "./components/PaymentMethodScreen";
 import MakePaymentScreen from "./components/MakePaymentScreen";
+import EndScreen from "./components/EndScreen";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             path="/MakeCardPayment"
             element={<MakePaymentScreen paymentType="카드" />}
           />
+          <Route path="/End" element={<EndScreen />} />
         </Routes>
       </BrowserRouter>
     </Container>
