@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomeScreen from "./components/WelcomeScreen";
 import InOutScreen from "./components/InOutScreen";
 import MenuTypeScreen from "./components/MenuTypeScreen";
+import LastCheckScreen from "./components/LastCheckScreen";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/InOut" element={<InOutScreen />} />
           <Route path="/MenuType" element={<MenuTypeScreen />} />
+          <Route path="/LastCheck" element={<LastCheckScreen />} />
         </Routes>
       </BrowserRouter>
     </Container>
