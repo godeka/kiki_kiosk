@@ -5,7 +5,7 @@ import GoBackButton from "./button/GoBackButton";
 import BoxButton from "./button/BoxButton";
 import Question from "./Question";
 
-export default function InOutScreen() {
+export default function LastCheckScreen() {
   return (
     <Box
       sx={{

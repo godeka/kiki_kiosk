@@ -5,7 +5,7 @@ import GoBackButton from "./button/GoBackButton";
 import Question from "./Question";
 import BoxButton from "./button/BoxButton";
 
-export default function MenuType() {
+export default function MenuTypeScreen() {
   return (
     <Box
       sx={{
