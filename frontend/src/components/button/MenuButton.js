@@ -8,6 +8,7 @@ export default function MenuButton({ name, img, price, handleClick }) {
         height: "120px",
         border: "2px solid black",
         borderRadius: "15px",
+        backgroundColor: "white",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
