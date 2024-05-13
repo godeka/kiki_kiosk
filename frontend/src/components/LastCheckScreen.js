@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Grid } from "@mui/material";
 import { Add, Paid } from "@mui/icons-material";
 
@@ -6,6 +8,8 @@ import BoxButton from "./button/BoxButton";
 import Question from "./Question";
 
 export default function LastCheckScreen() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -21,12 +25,18 @@ export default function LastCheckScreen() {
       </Question>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <BoxButton text="더 주문하기">
+          <BoxButton
+            text="더 주문하기"
+            handleClick={() => navigate("/MenuType")}
+          >
             <Add style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <BoxButton text="결제하기">
+          <BoxButton
+            text="결제하기"
+            handleClick={() => navigate("/PaymentMethod")}
+          >
             <Paid style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
