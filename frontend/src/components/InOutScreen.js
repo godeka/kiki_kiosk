@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Grid } from "@mui/material";
 import { Storefront, ExitToApp } from "@mui/icons-material";
 
@@ -6,6 +8,8 @@ import BoxButton from "./button/BoxButton";
 import Question from "./Question";
 
 export default function InOutScreen() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -21,12 +25,12 @@ export default function InOutScreen() {
       </Question>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <BoxButton text="매장">
+          <BoxButton text="매장" handleClick={() => navigate("/MenuType")}>
             <Storefront style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <BoxButton text="포장">
+          <BoxButton text="포장" handleClick={() => navigate("/MenuType")}>
             <ExitToApp style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
