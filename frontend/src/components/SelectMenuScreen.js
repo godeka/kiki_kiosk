@@ -26,7 +26,7 @@ export default function SelectMenuScreen({ menuList = sampleMenuList }) {
       <Grid container spacing={2}>
         {menuList.map((menu, index) => (
           <Grid item key={index} xs={4} style={{ padding: "10px" }}>
-            <MenuButton name={menu.name} price={menu.price} />
+            <MenuButton name={menu.name} price={menu.price} img={menu.img} />
           </Grid>
         ))}
       </Grid>
