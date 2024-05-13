@@ -5,6 +5,7 @@ import WelcomeScreen from "./components/WelcomeScreen";
 import InOutScreen from "./components/InOutScreen";
 import MenuTypeScreen from "./components/MenuTypeScreen";
 import LastCheckScreen from "./components/LastCheckScreen";
+import PaymentMethodScreen from "./components/PaymentMethodScreen";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/InOut" element={<InOutScreen />} />
           <Route path="/MenuType" element={<MenuTypeScreen />} />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
+          <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
         </Routes>
       </BrowserRouter>
     </Container>
