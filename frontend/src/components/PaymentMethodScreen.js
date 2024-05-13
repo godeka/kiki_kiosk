@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Grid } from "@mui/material";
 import { Money, Payment } from "@mui/icons-material";
 
@@ -6,6 +8,7 @@ import BoxButton from "./button/BoxButton";
 import Question from "./Question";
 
 export default function PaymentMethodScreen() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -22,12 +25,18 @@ export default function PaymentMethodScreen() {
       </Question>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <BoxButton text="현금">
+          <BoxButton
+            text="현금"
+            handleClick={() => navigate("/MakeCashPayment")}
+          >
             <Money style={{ fontSize: "60px" }} />
           </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <BoxButton text="카드">
+          <BoxButton
+            text="카드"
+            handleClick={() => navigate("/MakeCardPayment")}
+          >
             <Payment style={{ fontSize: "60px" }} />
           </BoxButton>
         </Grid>

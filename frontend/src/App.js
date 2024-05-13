@@ -26,7 +26,9 @@ function App() {
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/InOut" element={<InOutScreen />} />
           <Route path="/MenuType" element={<MenuTypeScreen />} />
-          <Route path="/SelectMenu" element={<SelectMenuScreen />} />
+          <Route path="/SelectBurger" element={<SelectMenuScreen />} />
+          <Route path="/SelectBeverage" element={<SelectMenuScreen />} />
+          <Route path="/SelectSide" element={<SelectMenuScreen />} />
           <Route path="/OrderCheck" element={<OrderCheckScreen />} />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />

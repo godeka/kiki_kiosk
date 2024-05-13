@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   Box,
   Grid,
@@ -30,6 +32,8 @@ const sampleSelectedList = [
 export default function OrderCheckScreen({
   selectedList = sampleSelectedList,
 }) {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -75,13 +79,19 @@ export default function OrderCheckScreen({
       </List>
       <Grid container spacing={3}>
         <Grid item xs={6}>
-          <Box sx={{ border: "2px solid black", borderRadius: "15px" }}>
+          <Box
+            sx={{ border: "2px solid black", borderRadius: "15px" }}
+            onClick={() => navigate(-1)}
+          >
             <Typography fontSize="20px">틀림</Typography>
             <West style={{ fontSize: "20px" }} />
           </Box>
         </Grid>
         <Grid item xs={6}>
-          <Box sx={{ border: "2px solid black", borderRadius: "15px" }}>
+          <Box
+            sx={{ border: "2px solid black", borderRadius: "15px" }}
+            onClick={() => navigate("/LastCheck")}
+          >
             <Typography fontSize="20px">맞음</Typography>
             <East style={{ fontSize: "20px" }} />
           </Box>
