@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import WelcomeScreen from "./components/WelcomeScreen";
 import InOutScreen from "./components/InOutScreen";
 import MenuTypeScreen from "./components/MenuTypeScreen";
+import SelectMenuScreen from "./components/SelectMenuScreen";
 import LastCheckScreen from "./components/LastCheckScreen";
 import PaymentMethodScreen from "./components/PaymentMethodScreen";
 import MakePaymentScreen from "./components/MakePaymentScreen";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/InOut" element={<InOutScreen />} />
           <Route path="/MenuType" element={<MenuTypeScreen />} />
+          <Route path="/SelectMenu" element={<SelectMenuScreen />} />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
           <Route
