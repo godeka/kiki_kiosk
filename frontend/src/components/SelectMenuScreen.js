@@ -1,4 +1,6 @@
-import { Container, Typography, Grid } from "@mui/material";
+import { Container, Typography, Grid, Box } from "@mui/material";
+import { East } from "@mui/icons-material";
+
 import GoBackButton from "./button/GoBackButton";
 import MenuButton from "./button/MenuButton";
 
@@ -28,6 +30,10 @@ export default function SelectMenuScreen({ menuList = sampleMenuList }) {
           </Grid>
         ))}
       </Grid>
+      <Box position="fixed" top="80%" left="42%">
+        <Typography fontSize="20px">다음 단계로</Typography>
+        <East style={{ fontSize: "20px" }} />
+      </Box>
     </Container>
   );
 }
