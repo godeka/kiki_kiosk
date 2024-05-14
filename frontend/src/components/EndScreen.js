@@ -1,7 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Typography } from "@mui/material";
 import { CheckCircleOutline, South } from "@mui/icons-material";
 
 export default function EndScreen() {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -29,7 +33,7 @@ export default function EndScreen() {
         아래에서 주문번호와 <br />
         영수증을 받으세요.
       </Typography>
-      <Box position="fixed" top="75%" left="45%">
+      <Box position="fixed" top="75%" left="45%" onClick={() => navigate("/")}>
         <South style={{ fontSize: "50px" }} />
       </Box>
     </Box>

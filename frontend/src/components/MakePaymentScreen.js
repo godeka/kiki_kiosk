@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { Box, Typography } from "@mui/material";
 import { South } from "@mui/icons-material";
 
@@ -5,6 +7,8 @@ import GoBackButton from "./button/GoBackButton";
 import Question from "./Question";
 
 export default function MakePaymentScreen({ paymentType }) {
+  const navigate = useNavigate();
+
   return (
     <Box
       sx={{
@@ -28,6 +32,7 @@ export default function MakePaymentScreen({ paymentType }) {
         position="fixed"
         top="70%"
         left={paymentType === "현금" ? "45%" : "65%"}
+        onClick={() => navigate("/End")}
       >
         <South style={{ fontSize: "50px" }} />
       </Box>
