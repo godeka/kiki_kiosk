@@ -12,11 +12,13 @@ public class OrderResponse {
     private Long count;
     private Long price;
     private Long menuId;
+    private String orderDate;
 
     public OrderResponse(Order order) {
         this.orderNumber = order.getOrderNumber();
         this.count = order.getCount();
         this.price = order.getPrice();
         this.menuId = order.getMenu().getId();
+        this.orderDate = order.getOrderDate().toString();
     }
 }

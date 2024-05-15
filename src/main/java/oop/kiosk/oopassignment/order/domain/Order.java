@@ -6,6 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oop.kiosk.oopassignment.menu.domain.Menu;
 import oop.kiosk.oopassignment.order.dto.OrderCreateRequest;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
@@ -25,17 +29,21 @@ public class Order {
     @Column(nullable = false)
     private Long count;
 
-    @Column
+    @Column(nullable = false)
     private Long price;
+
+    @Column(nullable = false)
+    private LocalDate orderDate;
 
     @ManyToOne
     @JoinColumn(name = "menu_id")
     private Menu menu;
 
-    public Order(OrderCreateRequest request, long price, Menu menu) {
+    public Order(OrderCreateRequest request, long price, Menu menu, LocalDate orderDate) {
         this.orderNumber = request.getOrderNumber();
         this.count = request.getCount();
         this.price = price;
         this.menu = menu;
+        this.orderDate = orderDate;
     }
 }

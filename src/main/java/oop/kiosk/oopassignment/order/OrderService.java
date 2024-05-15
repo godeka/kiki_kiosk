@@ -10,6 +10,8 @@ import oop.kiosk.oopassignment.order.dto.OrderCreateRequest;
 import oop.kiosk.oopassignment.menu.MenuRepository;
 import oop.kiosk.oopassignment.order.dto.OrderResponse;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -24,7 +26,8 @@ public class OrderService {
         Menu menu = menuRepository.findById(orderCreateRequest.getMenuId())
                 .orElseThrow(() -> new IllegalArgumentException("Menu not found"));
         Long price = (long) menu.getPrice();
-        orderRepository.save(new Order(orderCreateRequest, price, menu));
+        LocalDate orderDate = LocalDate.now();
+        orderRepository.save(new Order(orderCreateRequest, price, menu, orderDate));
     }
 
     @Transactional
