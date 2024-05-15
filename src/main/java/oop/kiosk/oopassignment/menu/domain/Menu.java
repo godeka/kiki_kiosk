@@ -3,6 +3,7 @@ package oop.kiosk.oopassignment.menu.domain;
 import jakarta.persistence.*;
 
 import lombok.*;
+import oop.kiosk.oopassignment.image.domain.Image;
 import oop.kiosk.oopassignment.menu.dto.MenuCreateRequest;
 
 @Getter
@@ -30,6 +31,9 @@ public class Menu {
     private boolean soldOut;
 
     //이미지
+    @OneToOne
+    @JoinColumn(name = "image_id")
+    private Image image;
 
     public Menu(MenuCreateRequest request) {
         this.name = request.getName();

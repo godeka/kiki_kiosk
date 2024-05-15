@@ -10,5 +10,4 @@ public class MenuCreateRequest {
     private int price;
     private String info;
     private boolean soldOut;
-    //이미지
 }
