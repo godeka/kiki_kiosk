@@ -26,4 +26,16 @@ public class MenuService {
                 .map(MenuResponse::new)
                 .toList();
     }
+
+    @Transactional
+    public void updateSoldOut(Long menuId){
+        Menu menu = menuRepository.findById(menuId)
+                .orElseThrow(IllegalArgumentException::new);
+        menu.updateSoldOut();
+    }
+
+    @Transactional
+    public void deleteMenu(Long menuId) {
+        menuRepository.deleteById(menuId);
+    }
 }

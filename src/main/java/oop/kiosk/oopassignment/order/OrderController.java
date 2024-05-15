@@ -15,7 +15,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping("/api/order")
+    @PostMapping("/api/order") //메뉴 추가
     public void saveOrder(@RequestBody OrderCreateRequest orderCreateRequest){
         orderService.saveOrder(orderCreateRequest);
     }

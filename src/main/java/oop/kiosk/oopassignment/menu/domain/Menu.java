@@ -27,7 +27,7 @@ public class Menu {
     @Column
     private String info;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
     private boolean soldOut;
 
     //이미지
@@ -39,6 +39,14 @@ public class Menu {
         this.name = request.getName();
         this.price = request.getPrice();
         this.info = request.getInfo();
-        this.soldOut = request.isSoldOut();
+    }
+
+    public void updateSoldOut(){
+        if (this.soldOut == true){
+            this.soldOut = false;
+        } else {
+            this.soldOut = true;
+        }
     }
 }
+
