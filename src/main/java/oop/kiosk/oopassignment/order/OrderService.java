@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import oop.kiosk.oopassignment.order.domain.Order;
 import oop.kiosk.oopassignment.menu.MenuRepository;
 import oop.kiosk.oopassignment.order.dto.OrderResponse;
+import oop.kiosk.oopassignment.paymentinfo.PaymentService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,6 +22,8 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final MenuRepository menuRepository;
+    private final PaymentService paymentService;
+
 
     @Transactional
     public ResponseEntity<Long> saveOrder(OrderCreateRequestList requestList) {
@@ -31,6 +34,7 @@ public class OrderService {
                     .orElseThrow();
             Order order = new Order(requestList,request, menu.getPrice(), menu, LocalDate.now());
             orderRepository.save(order);
+            paymentService.savePayment(order.getId());
         }
 
         return ResponseEntity.ok(requestList.getOrderNumber());
