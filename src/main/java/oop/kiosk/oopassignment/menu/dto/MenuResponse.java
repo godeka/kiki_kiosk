@@ -11,6 +11,7 @@ public class MenuResponse {
     private Long id;
     private String name;
     private int price;
+    private String type;
     private String info;
     private boolean soldOut;
     //이미지
@@ -21,5 +22,6 @@ public class MenuResponse {
         this.price = menu.getPrice();
         this.info = menu.getInfo();
         this.soldOut = menu.isSoldOut();
+        this.type = menu.getType().getName();
     }
 }

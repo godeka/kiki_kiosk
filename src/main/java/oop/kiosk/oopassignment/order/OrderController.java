@@ -2,6 +2,8 @@ package oop.kiosk.oopassignment.order;
 
 import lombok.AllArgsConstructor;
 import oop.kiosk.oopassignment.order.dto.OrderCreateRequest;
+import oop.kiosk.oopassignment.order.dto.OrderCreateRequestList;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +18,8 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/api/order") //메뉴 추가
-    public void saveOrder(@RequestBody OrderCreateRequest orderCreateRequest){
-        orderService.saveOrder(orderCreateRequest);
+    public ResponseEntity<Long> saveOrder(@RequestBody OrderCreateRequestList request){
+       return orderService.saveOrder(request);
     }
 
     @GetMapping("/api/order/all")

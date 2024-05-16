@@ -3,6 +3,7 @@ package oop.kiosk.oopassignment.menu.domain;
 import jakarta.persistence.*;
 
 import lombok.*;
+import oop.kiosk.oopassignment.etc.MenuType;
 import oop.kiosk.oopassignment.image.domain.Image;
 import oop.kiosk.oopassignment.menu.dto.MenuCreateRequest;
 
@@ -30,6 +31,10 @@ public class Menu {
     @Column(nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
     private boolean soldOut;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private MenuType type;
+
     //이미지
     @OneToOne
     @JoinColumn(name = "image_id")
@@ -39,6 +44,8 @@ public class Menu {
         this.name = request.getName();
         this.price = request.getPrice();
         this.info = request.getInfo();
+        // type 에 menuType 으로 받아올꺼임 request 에서 int로 받았음
+        this.type = MenuType.valueOf(request.getType());
     }
 
     public void updateSoldOut(){

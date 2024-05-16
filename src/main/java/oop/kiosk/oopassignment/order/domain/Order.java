@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import oop.kiosk.oopassignment.menu.domain.Menu;
 import oop.kiosk.oopassignment.order.dto.OrderCreateRequest;
+import oop.kiosk.oopassignment.order.dto.OrderCreateRequestList;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
@@ -39,8 +40,8 @@ public class Order {
     @JoinColumn(name = "menu_id")
     private Menu menu;
 
-    public Order(OrderCreateRequest request, long price, Menu menu, LocalDate orderDate) {
-        this.orderNumber = request.getOrderNumber();
+    public Order(OrderCreateRequestList requestList, OrderCreateRequest request, long price, Menu menu, LocalDate orderDate) {
+        this.orderNumber = requestList.getOrderNumber();
         this.count = request.getCount();
         this.price = price;
         this.menu = menu;

@@ -2,8 +2,10 @@ package oop.kiosk.oopassignment.menu;
 
 
 import lombok.AllArgsConstructor;
+import oop.kiosk.oopassignment.menu.domain.Menu;
 import oop.kiosk.oopassignment.menu.dto.MenuCreateRequest;
 import oop.kiosk.oopassignment.menu.dto.MenuResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class MenuController {
     private final MenuService menuService;
 
     @PostMapping("/api/menu")
-    public void saveMenu(@RequestBody MenuCreateRequest menuCreateRequest){
-        menuService.saveMenu(menuCreateRequest);
+    public List<MenuResponse> saveMenu(@RequestBody MenuCreateRequest menuCreateRequest){
+        return menuService.saveMenu(menuCreateRequest);
     }
 
     @GetMapping("/api/menu/all")
@@ -24,13 +26,18 @@ public class MenuController {
         return menuService.getMenuAll();
     }
 
+    @GetMapping("/api/menu/type")
+    public List<MenuResponse> getMenuByType(@RequestParam String type){
+        return menuService.getMenuByType(type);
+    }
+
     @PatchMapping("/api/menu")
-    public void updateSoldOut(@RequestParam Long menuId){
-        menuService.updateSoldOut(menuId);
+    public ResponseEntity<Menu> updateSoldOut(@RequestParam Long menuId){
+        return menuService.updateSoldOut(menuId);
     }
 
     @DeleteMapping("/api/menu")
-    public void deleteMenu(@RequestParam Long menuId){
-        menuService.deleteMenu(menuId);
+    public ResponseEntity<List<Menu>> deleteMenu(@RequestParam Long menuId){
+        return menuService.deleteMenu(menuId);
     }
 }

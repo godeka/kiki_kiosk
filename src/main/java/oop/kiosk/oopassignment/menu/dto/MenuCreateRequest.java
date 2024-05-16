@@ -8,5 +8,6 @@ import lombok.Setter;
 public class MenuCreateRequest {
     private String name;
     private int price;
+    private String type;
     private String info;
 }

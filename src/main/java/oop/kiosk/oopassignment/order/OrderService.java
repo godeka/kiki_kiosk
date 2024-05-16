@@ -3,10 +3,12 @@ package oop.kiosk.oopassignment.order;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import oop.kiosk.oopassignment.menu.domain.Menu;
+import oop.kiosk.oopassignment.order.dto.OrderCreateRequest;
+import oop.kiosk.oopassignment.order.dto.OrderCreateRequestList;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import oop.kiosk.oopassignment.order.domain.Order;
-import oop.kiosk.oopassignment.order.dto.OrderCreateRequest;
 import oop.kiosk.oopassignment.menu.MenuRepository;
 import oop.kiosk.oopassignment.order.dto.OrderResponse;
 
@@ -21,12 +23,17 @@ public class OrderService {
     private final MenuRepository menuRepository;
 
     @Transactional
-    public void saveOrder(OrderCreateRequest orderCreateRequest) {
-        Menu menu = menuRepository.findById(orderCreateRequest.getMenuId())
-                .orElseThrow(() -> new IllegalArgumentException("Menu not found"));
-        Long price = (long) menu.getPrice();
-        LocalDate orderDate = LocalDate.now();
-        orderRepository.save(new Order(orderCreateRequest, price, menu, orderDate));
+    public ResponseEntity<Long> saveOrder(OrderCreateRequestList requestList) {
+        List<OrderCreateRequest> requests = requestList.getOrderSheet();
+
+        for(OrderCreateRequest request : requests){
+            Menu menu = menuRepository.findById(request.getMenuId())
+                    .orElseThrow();
+            Order order = new Order(requestList,request, menu.getPrice(), menu, LocalDate.now());
+            orderRepository.save(order);
+        }
+
+        return ResponseEntity.ok(requestList.getOrderNumber());
     }
 
     @Transactional
