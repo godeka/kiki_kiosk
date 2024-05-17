@@ -9,4 +9,6 @@ import java.time.LocalDate;
 
 public interface PaymentRepository extends JpaRepository<Payment, Long>{
     List<Payment> findAllByDate(LocalDate date);
+
+    List<Payment> findAllByDateBetween(LocalDate localDate, LocalDate localDate1);
 }

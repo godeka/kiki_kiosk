@@ -1,6 +1,7 @@
 package oop.kiosk.oopassignment.paymentinfo;
 
 import lombok.AllArgsConstructor;
+import oop.kiosk.oopassignment.paymentinfo.dto.PaymentMonthResponse;
 import oop.kiosk.oopassignment.paymentinfo.dto.PaymentResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +20,13 @@ public class PaymentController {
         paymentService.savePayment(orderPKId);
     }
 
-    @GetMapping("/api/payment")
+    @GetMapping("/api/payment/day")
     public PaymentResponse getDayPrice(@RequestParam LocalDate date) {
         return paymentService.getDayPrice(date);
+    }
+
+    @GetMapping("/api/payment/month")
+    public PaymentMonthResponse getMonthPrice(@RequestParam LocalDate date) {
+        return paymentService.getMonthPrice(date);
     }
 }
