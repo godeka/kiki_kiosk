@@ -7,7 +7,7 @@ export default function GoBackButton() {
   const navigate = useNavigate();
 
   return (
-    <Box position="fixed" top="50%">
+    <Box position="fixed" top="50%" left="10%">
       <IconButton onClick={() => navigate(-1)}>
         <ArrowBack />
       </IconButton>
