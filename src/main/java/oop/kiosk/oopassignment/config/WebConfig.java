@@ -13,8 +13,8 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOriginPatterns("http://localhost:3000")
-                .allowedHeaders("OPTIONS", "GET", "POST", "PUT", "DELETE");
-//                .allowedHeaders("Authorization", "Content-Type")
+                .allowedHeaders("OPTIONS", "GET", "POST", "PUT", "DELETE", "PATCH");
+//                .allowedHeaders("*");
 //                .allowCredentials(true);
     }
 }
