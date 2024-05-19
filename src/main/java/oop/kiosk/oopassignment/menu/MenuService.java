@@ -35,7 +35,7 @@ public class MenuService {
     @Transactional
     public List<MenuResponse> getMenuByType(String type) {
         MenuType menuType = MenuType.valueOf(type);
-        return menuRepository.findByType(menuType).stream()
+        return menuRepository.findAllByType(menuType).stream()
                 .map(MenuResponse::new)
                 .toList();
     }
