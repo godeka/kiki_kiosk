@@ -14,6 +14,7 @@ public class MenuResponse {
     private String type;
     private String info;
     private boolean soldOut;
+    private String imageUrl;
     //이미지
 
     public MenuResponse(Menu menu){
@@ -23,5 +24,6 @@ public class MenuResponse {
         this.info = menu.getInfo();
         this.soldOut = menu.isSoldOut();
         this.type = menu.getType().getName();
+        this.imageUrl = menu.getImageUrl();
     }
 }

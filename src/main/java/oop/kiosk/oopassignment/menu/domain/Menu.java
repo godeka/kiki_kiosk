@@ -35,6 +35,9 @@ public class Menu {
     @Column(nullable = false)
     private MenuType type;
 
+    @Column
+    private String imageUrl;
+
     //이미지
     @OneToOne
     @JoinColumn(name = "image_id")
