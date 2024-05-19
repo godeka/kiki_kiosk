@@ -10,4 +10,5 @@ public class MenuCreateRequest {
     private int price;
     private String type;
     private String info;
+    private String imageUrl;
 }
