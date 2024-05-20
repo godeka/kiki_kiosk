@@ -29,7 +29,7 @@ const sampleSelectedList = [
   { name: "메뉴6", price: "6,000", img: "", num: 2 },
 ]; // 메뉴 목록
 
-export default function OrderCheckScreen({ selectedMenus, menuList }) {
+export default function OrderCheckScreen({ selectedList, menuList }) {
   const navigate = useNavigate();
 
   return (
@@ -54,27 +54,29 @@ export default function OrderCheckScreen({ selectedMenus, menuList }) {
           borderRadius: "15px",
         }}
       >
-        {Object.keys(selectedMenus).map((menuId, index) => {
-          const menu = menuList.find((menu) => menu.id == menuId);
+        {selectedList.map((m, index) => {
+          const selectedMenu = menuList.find((menu) => menu.id === m.menuId);
 
           return (
             <>
               <ListItem key={index}>
                 <ListItemAvatar>
-                  <Avatar src={menu.imageUrl} />
+                  <Avatar src={selectedMenu.imageUrl} />
                 </ListItemAvatar>
                 <ListItemText
-                  primary={menu.name}
+                  primary={selectedMenu.name}
                   secondary={
-                    <Typography variant="body2">{menu.price}원</Typography>
+                    <Typography variant="body2">
+                      {selectedMenu.price}원
+                    </Typography>
                   }
                 />
                 <ListItemText
-                  primary={selectedMenus[menuId] + "개"}
+                  primary={selectedList[index].count + "개"}
                   sx={{ textAlign: "right" }}
                 />
               </ListItem>
-              {index !== selectedMenus.length - 1 && <Divider />}
+              {index !== selectedList.length - 1 && <Divider />}
             </>
           );
         })}

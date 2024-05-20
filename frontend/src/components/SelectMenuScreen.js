@@ -20,18 +20,20 @@ const sampleMenuList = [
 
 export default function SelectMenuScreen({
   menuList = sampleMenuList,
-  selectedMenus,
-  setSelectedMenus,
+  selectedList,
+  setSelectedList,
 }) {
   const navigate = useNavigate();
   const handleClickMenu = (menu) => {
-    let newSelectedMenus = { ...selectedMenus };
-    if (newSelectedMenus[menu.id]) {
-      newSelectedMenus[menu.id] += 1;
+    let newSelectedMenus = [...selectedList];
+    let index = newSelectedMenus.findIndex((m) => m.menuId === menu.id);
+
+    if (index === -1) {
+      newSelectedMenus.push({ menuId: menu.id, count: 1 });
     } else {
-      newSelectedMenus[menu.id] = 1;
+      newSelectedMenus[index].count += 1;
     }
-    setSelectedMenus(newSelectedMenus);
+    setSelectedList(newSelectedMenus);
     console.log(newSelectedMenus);
   };
 
@@ -42,17 +44,20 @@ export default function SelectMenuScreen({
         메뉴 선택
       </Typography>
       <Grid container spacing={2}>
-        {menuList.map((menu, index) => (
-          <Grid item key={index} xs={4} style={{ padding: "10px" }}>
-            <MenuButton
-              name={menu.name}
-              price={menu.price}
-              img={menu.imageUrl}
-              handleClick={() => handleClickMenu(menu)}
-              clickCount={selectedMenus[menu.id] || 0}
-            />
-          </Grid>
-        ))}
+        {menuList.map((menu, index) => {
+          const idx = selectedList.findIndex((m) => m.menuId === menu.id);
+          return (
+            <Grid item key={index} xs={4} style={{ padding: "10px" }}>
+              <MenuButton
+                name={menu.name}
+                price={menu.price}
+                img={menu.imageUrl}
+                handleClick={() => handleClickMenu(menu)}
+                clickCount={selectedList[idx] ? selectedList[idx].count : 0}
+              />
+            </Grid>
+          );
+        })}
       </Grid>
       <Box
         position="fixed"

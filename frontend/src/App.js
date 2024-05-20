@@ -16,7 +16,7 @@ import EndScreen from "./components/EndScreen";
 const serverUrl = "http://43.203.235.200:8080";
 
 function App() {
-  const [selectedMenus, setSelectedMenus] = useState({}); // 선택 메뉴 ID별 개수 (단계별)
+  const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
   const [menuList, setMenuList] = useState([]);
 
   useEffect(() => {
@@ -48,8 +48,8 @@ function App() {
             element={
               <SelectMenuScreen
                 menuList={menuList.filter((menu) => menu.type === "버거")}
-                selectedMenus={selectedMenus}
-                setSelectedMenus={setSelectedMenus}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
               />
             }
           />
@@ -58,8 +58,8 @@ function App() {
             element={
               <SelectMenuScreen
                 menuList={menuList.filter((menu) => menu.type === "음료")}
-                selectedMenus={selectedMenus}
-                setSelectedMenus={setSelectedMenus}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
               />
             }
           />
@@ -68,8 +68,8 @@ function App() {
             element={
               <SelectMenuScreen
                 menuList={menuList.filter((menu) => menu.type === "사이드")}
-                selectedMenus={selectedMenus}
-                setSelectedMenus={setSelectedMenus}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
               />
             }
           />
@@ -77,7 +77,7 @@ function App() {
             path="/OrderCheck"
             element={
               <OrderCheckScreen
-                selectedMenus={selectedMenus}
+                selectedList={selectedList}
                 menuList={menuList}
               />
             }
