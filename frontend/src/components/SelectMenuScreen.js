@@ -47,7 +47,7 @@ export default function SelectMenuScreen({
             <MenuButton
               name={menu.name}
               price={menu.price}
-              img={menu.img}
+              img={menu.imageUrl}
               handleClick={() => handleClickMenu(menu)}
             />
           </Grid>
