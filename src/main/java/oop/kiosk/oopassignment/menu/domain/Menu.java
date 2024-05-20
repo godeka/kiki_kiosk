@@ -49,6 +49,7 @@ public class Menu {
         this.info = request.getInfo();
         // type 에 menuType 으로 받아올꺼임 request 에서 int로 받았음
         this.type = MenuType.valueOf(request.getType());
+        this.imageUrl = request.getImageUrl();
     }
 
     public void updateSoldOut(){
