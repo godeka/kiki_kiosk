@@ -82,8 +82,8 @@ export default function OrderCheckScreen({
           const selectedMenu = menuList.find((menu) => menu.id === m.menuId);
 
           return (
-            <>
-              <ListItem key={index}>
+            <Box key={index}>
+              <ListItem>
                 <ListItemAvatar>
                   <Avatar src={selectedMenu.imageUrl} />
                 </ListItemAvatar>
@@ -101,7 +101,7 @@ export default function OrderCheckScreen({
                 />
               </ListItem>
               {index !== selectedList.length - 1 && <Divider />}
-            </>
+            </Box>
           );
         })}
       </List>
