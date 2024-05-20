@@ -18,9 +18,6 @@ const serverUrl = "http://43.203.235.200:8080";
 function App() {
   const [selectedMenus, setSelectedMenus] = useState({}); // 선택 메뉴 ID별 개수 (단계별)
   const [menuList, setMenuList] = useState([]);
-  const [burgerList, setBurgerList] = useState([]);
-  const [beverageList, setBeverageList] = useState([]);
-  const [sideList, setSideList] = useState([]);
 
   useEffect(() => {
     // 모든 메뉴 가져오기
@@ -29,9 +26,6 @@ function App() {
       .then((data) => {
         console.log(data);
         setMenuList(data);
-        setBurgerList(data.filter((menu) => menu.type === "버거"));
-        setBeverageList(data.filter((menu) => menu.type === "음료"));
-        setSideList(data.filter((menu) => menu.type === "사이드"));
       });
   }, []);
 
@@ -53,7 +47,7 @@ function App() {
             path="/SelectBurger"
             element={
               <SelectMenuScreen
-                menuList={burgerList}
+                menuList={menuList.filter((menu) => menu.type === "버거")}
                 selectedMenus={selectedMenus}
                 setSelectedMenus={setSelectedMenus}
               />
@@ -63,7 +57,7 @@ function App() {
             path="/SelectBeverage"
             element={
               <SelectMenuScreen
-                menuList={beverageList}
+                menuList={menuList.filter((menu) => menu.type === "음료")}
                 selectedMenus={selectedMenus}
                 setSelectedMenus={setSelectedMenus}
               />
@@ -73,7 +67,7 @@ function App() {
             path="/SelectSide"
             element={
               <SelectMenuScreen
-                menuList={sideList}
+                menuList={menuList.filter((menu) => menu.type === "사이드")}
                 selectedMenus={selectedMenus}
                 setSelectedMenus={setSelectedMenus}
               />
