@@ -29,8 +29,32 @@ const sampleSelectedList = [
   { name: "메뉴6", price: "6,000", img: "", num: 2 },
 ]; // 메뉴 목록
 
-export default function OrderCheckScreen({ selectedList, menuList }) {
+export default function OrderCheckScreen({
+  menuList,
+  selectedList,
+  setSelectedList,
+  orderList,
+  setOrderList,
+}) {
   const navigate = useNavigate();
+
+  // '틀림' 버튼 클릭 핸들러
+  const handleClickWrong = () => {
+    navigate(-1);
+    setSelectedList([]); // 선택한 메뉴 초기화
+  };
+
+  // '맞음' 버튼 클릭 핸들러
+  const handleClickRight = () => {
+    navigate("/LastCheck");
+
+    // 선택한 메뉴들 주문 목록에 추가
+    let newOrderList = [...orderList];
+    newOrderList.push(...selectedList);
+    setOrderList(newOrderList);
+
+    setSelectedList([]); // 선택한 메뉴 초기화
+  };
 
   return (
     <Box
@@ -85,7 +109,7 @@ export default function OrderCheckScreen({ selectedList, menuList }) {
         <Grid item xs={6}>
           <Box
             sx={{ border: "2px solid black", borderRadius: "15px" }}
-            onClick={() => navigate(-1)}
+            onClick={handleClickWrong}
           >
             <Typography fontSize="20px">틀림</Typography>
             <West style={{ fontSize: "20px" }} />
@@ -94,7 +118,7 @@ export default function OrderCheckScreen({ selectedList, menuList }) {
         <Grid item xs={6}>
           <Box
             sx={{ border: "2px solid black", borderRadius: "15px" }}
-            onClick={() => navigate("/LastCheck")}
+            onClick={handleClickRight}
           >
             <Typography fontSize="20px">맞음</Typography>
             <East style={{ fontSize: "20px" }} />

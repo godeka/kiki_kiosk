@@ -16,6 +16,7 @@ import EndScreen from "./components/EndScreen";
 const serverUrl = "http://43.203.235.200:8080";
 
 function App() {
+  const [orderList, setOrderList] = useState([]); // 전체 주문 목록 [ { menuId: 1, count: 2 }, ... ]
   const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
   const [menuList, setMenuList] = useState([]);
 
@@ -77,8 +78,11 @@ function App() {
             path="/OrderCheck"
             element={
               <OrderCheckScreen
-                selectedList={selectedList}
                 menuList={menuList}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
+                orderList={orderList}
+                setOrderList={setOrderList}
               />
             }
           />
