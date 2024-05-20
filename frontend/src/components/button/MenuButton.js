@@ -18,7 +18,7 @@ export default function MenuButton({ name, img, price, handleClick }) {
     >
       <Typography variant="h9">{name}</Typography>
       <Avatar src={img} variant="square" sx={{ margin: "10px" }} />
-      <Typography variant="h9">{price}</Typography>
+      <Typography variant="h9">{price}₩</Typography>
     </Box>
   );
 }

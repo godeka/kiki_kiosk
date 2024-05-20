@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useState } from "react-router-dom";
 
 import { Container, Typography, Grid, Box } from "@mui/material";
 import { East } from "@mui/icons-material";
@@ -18,8 +18,22 @@ const sampleMenuList = [
   { name: "메뉴9", price: "5,000₩", img: "" },
 ]; // 메뉴 목록
 
-export default function SelectMenuScreen({ menuList = sampleMenuList }) {
+export default function SelectMenuScreen({
+  menuList = sampleMenuList,
+  selectedMenus,
+  setSelectedMenus,
+}) {
   const navigate = useNavigate();
+  const handleClickMenu = (menu) => {
+    let newSelectedMenus = { ...selectedMenus };
+    if (newSelectedMenus[menu.id]) {
+      newSelectedMenus[menu.id] += 1;
+    } else {
+      newSelectedMenus[menu.id] = 1;
+    }
+    setSelectedMenus(newSelectedMenus);
+    console.log(newSelectedMenus);
+  };
 
   return (
     <Container>
@@ -30,7 +44,12 @@ export default function SelectMenuScreen({ menuList = sampleMenuList }) {
       <Grid container spacing={2}>
         {menuList.map((menu, index) => (
           <Grid item key={index} xs={4} style={{ padding: "10px" }}>
-            <MenuButton name={menu.name} price={menu.price} img={menu.img} />
+            <MenuButton
+              name={menu.name}
+              price={menu.price}
+              img={menu.imageUrl}
+              handleClick={() => handleClickMenu(menu)}
+            />
           </Grid>
         ))}
       </Grid>

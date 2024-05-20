@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -11,7 +13,26 @@ import PaymentMethodScreen from "./components/PaymentMethodScreen";
 import MakePaymentScreen from "./components/MakePaymentScreen";
 import EndScreen from "./components/EndScreen";
 
+const serverUrl = "http://43.203.235.200:8080";
+
 function App() {
+  const [selectedMenus, setSelectedMenus] = useState({}); // 선택한 메뉴 목록 (단계별)
+  const [burgerList, setBurgerList] = useState([]);
+  const [beverageList, setBeverageList] = useState([]);
+  const [sideList, setSideList] = useState([]);
+
+  useEffect(() => {
+    // 모든 메뉴 가져오기
+    fetch(`${serverUrl}/api/menu/all`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBurgerList(data.filter((menu) => menu.type === "버거"));
+        setBeverageList(data.filter((menu) => menu.type === "음료"));
+        setSideList(data.filter((menu) => menu.type === "사이드"));
+      });
+  }, []);
+
   return (
     <Container
       sx={{
@@ -26,9 +47,36 @@ function App() {
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/InOut" element={<InOutScreen />} />
           <Route path="/MenuType" element={<MenuTypeScreen />} />
-          <Route path="/SelectBurger" element={<SelectMenuScreen />} />
-          <Route path="/SelectBeverage" element={<SelectMenuScreen />} />
-          <Route path="/SelectSide" element={<SelectMenuScreen />} />
+          <Route
+            path="/SelectBurger"
+            element={
+              <SelectMenuScreen
+                menuList={burgerList}
+                selectedMenus={selectedMenus}
+                setSelectedMenus={setSelectedMenus}
+              />
+            }
+          />
+          <Route
+            path="/SelectBeverage"
+            element={
+              <SelectMenuScreen
+                menuList={beverageList}
+                selectedMenus={selectedMenus}
+                setSelectedMenus={setSelectedMenus}
+              />
+            }
+          />
+          <Route
+            path="/SelectSide"
+            element={
+              <SelectMenuScreen
+                menuList={sideList}
+                selectedMenus={selectedMenus}
+                setSelectedMenus={setSelectedMenus}
+              />
+            }
+          />
           <Route path="/OrderCheck" element={<OrderCheckScreen />} />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
