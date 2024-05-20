@@ -16,7 +16,8 @@ import EndScreen from "./components/EndScreen";
 const serverUrl = "http://43.203.235.200:8080";
 
 function App() {
-  const [selectedMenus, setSelectedMenus] = useState({}); // 선택한 메뉴 목록 (단계별)
+  const [selectedMenus, setSelectedMenus] = useState({}); // 선택 메뉴 ID별 개수 (단계별)
+  const [menuList, setMenuList] = useState([]);
   const [burgerList, setBurgerList] = useState([]);
   const [beverageList, setBeverageList] = useState([]);
   const [sideList, setSideList] = useState([]);
@@ -27,6 +28,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setMenuList(data);
         setBurgerList(data.filter((menu) => menu.type === "버거"));
         setBeverageList(data.filter((menu) => menu.type === "음료"));
         setSideList(data.filter((menu) => menu.type === "사이드"));
@@ -77,7 +79,15 @@ function App() {
               />
             }
           />
-          <Route path="/OrderCheck" element={<OrderCheckScreen />} />
+          <Route
+            path="/OrderCheck"
+            element={
+              <OrderCheckScreen
+                selectedMenus={selectedMenus}
+                menuList={menuList}
+              />
+            }
+          />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
           <Route

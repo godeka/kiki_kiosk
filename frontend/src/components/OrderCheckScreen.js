@@ -29,9 +29,7 @@ const sampleSelectedList = [
   { name: "메뉴6", price: "6,000", img: "", num: 2 },
 ]; // 메뉴 목록
 
-export default function OrderCheckScreen({
-  selectedList = sampleSelectedList,
-}) {
+export default function OrderCheckScreen({ selectedMenus, menuList }) {
   const navigate = useNavigate();
 
   return (
@@ -56,26 +54,30 @@ export default function OrderCheckScreen({
           borderRadius: "15px",
         }}
       >
-        {selectedList.map((menu, index) => (
-          <>
-            <ListItem key={index}>
-              <ListItemAvatar>
-                <Avatar src={menu.img} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={menu.name}
-                secondary={
-                  <Typography variant="body2">{menu.price}원</Typography>
-                }
-              />
-              <ListItemText
-                primary={menu.num + "개"}
-                sx={{ textAlign: "right" }}
-              />
-            </ListItem>
-            {index !== selectedList.length - 1 && <Divider />}
-          </>
-        ))}
+        {Object.keys(selectedMenus).map((menuId, index) => {
+          const menu = menuList.find((menu) => menu.id == menuId);
+
+          return (
+            <>
+              <ListItem key={index}>
+                <ListItemAvatar>
+                  <Avatar src={menu.imageUrl} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={menu.name}
+                  secondary={
+                    <Typography variant="body2">{menu.price}원</Typography>
+                  }
+                />
+                <ListItemText
+                  primary={selectedMenus[menuId] + "개"}
+                  sx={{ textAlign: "right" }}
+                />
+              </ListItem>
+              {index !== selectedMenus.length - 1 && <Divider />}
+            </>
+          );
+        })}
       </List>
       <Grid container spacing={3}>
         <Grid item xs={6}>
