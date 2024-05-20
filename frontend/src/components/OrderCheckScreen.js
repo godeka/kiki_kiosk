@@ -30,9 +30,31 @@ const sampleSelectedList = [
 ]; // 메뉴 목록
 
 export default function OrderCheckScreen({
-  selectedList = sampleSelectedList,
+  menuList,
+  selectedList,
+  setSelectedList,
+  orderList,
+  setOrderList,
 }) {
   const navigate = useNavigate();
+
+  // '틀림' 버튼 클릭 핸들러
+  const handleClickWrong = () => {
+    navigate(-1);
+    setSelectedList([]); // 선택한 메뉴 초기화
+  };
+
+  // '맞음' 버튼 클릭 핸들러
+  const handleClickRight = () => {
+    navigate("/LastCheck");
+
+    // 선택한 메뉴들 주문 목록에 추가
+    let newOrderList = [...orderList];
+    newOrderList.push(...selectedList);
+    setOrderList(newOrderList);
+
+    setSelectedList([]); // 선택한 메뉴 초기화
+  };
 
   return (
     <Box
@@ -56,32 +78,38 @@ export default function OrderCheckScreen({
           borderRadius: "15px",
         }}
       >
-        {selectedList.map((menu, index) => (
-          <>
-            <ListItem key={index}>
-              <ListItemAvatar>
-                <Avatar src={menu.img} />
-              </ListItemAvatar>
-              <ListItemText
-                primary={menu.name}
-                secondary={
-                  <Typography variant="body2">{menu.price}원</Typography>
-                }
-              />
-              <ListItemText
-                primary={menu.num + "개"}
-                sx={{ textAlign: "right" }}
-              />
-            </ListItem>
-            {index !== selectedList.length - 1 && <Divider />}
-          </>
-        ))}
+        {selectedList.map((m, index) => {
+          const selectedMenu = menuList.find((menu) => menu.id === m.menuId);
+
+          return (
+            <Box key={index}>
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar src={selectedMenu.imageUrl} />
+                </ListItemAvatar>
+                <ListItemText
+                  primary={selectedMenu.name}
+                  secondary={
+                    <Typography variant="body2">
+                      {selectedMenu.price}원
+                    </Typography>
+                  }
+                />
+                <ListItemText
+                  primary={selectedList[index].count + "개"}
+                  sx={{ textAlign: "right" }}
+                />
+              </ListItem>
+              {index !== selectedList.length - 1 && <Divider />}
+            </Box>
+          );
+        })}
       </List>
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Box
             sx={{ border: "2px solid black", borderRadius: "15px" }}
-            onClick={() => navigate(-1)}
+            onClick={handleClickWrong}
           >
             <Typography fontSize="20px">틀림</Typography>
             <West style={{ fontSize: "20px" }} />
@@ -90,7 +118,7 @@ export default function OrderCheckScreen({
         <Grid item xs={6}>
           <Box
             sx={{ border: "2px solid black", borderRadius: "15px" }}
-            onClick={() => navigate("/LastCheck")}
+            onClick={handleClickRight}
           >
             <Typography fontSize="20px">맞음</Typography>
             <East style={{ fontSize: "20px" }} />

@@ -16,10 +16,9 @@ import EndScreen from "./components/EndScreen";
 const serverUrl = "http://43.203.235.200:8080";
 
 function App() {
-  const [selectedMenus, setSelectedMenus] = useState({}); // 선택한 메뉴 목록 (단계별)
-  const [burgerList, setBurgerList] = useState([]);
-  const [beverageList, setBeverageList] = useState([]);
-  const [sideList, setSideList] = useState([]);
+  const [orderList, setOrderList] = useState([]); // 전체 주문 목록 [ { menuId: 1, count: 2 }, ... ]
+  const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
+  const [menuList, setMenuList] = useState([]);
 
   useEffect(() => {
     // 모든 메뉴 가져오기
@@ -27,9 +26,7 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setBurgerList(data.filter((menu) => menu.type === "버거"));
-        setBeverageList(data.filter((menu) => menu.type === "음료"));
-        setSideList(data.filter((menu) => menu.type === "사이드"));
+        setMenuList(data);
       });
   }, []);
 
@@ -51,9 +48,9 @@ function App() {
             path="/SelectBurger"
             element={
               <SelectMenuScreen
-                menuList={burgerList}
-                selectedMenus={selectedMenus}
-                setSelectedMenus={setSelectedMenus}
+                menuList={menuList.filter((menu) => menu.type === "버거")}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
               />
             }
           />
@@ -61,9 +58,9 @@ function App() {
             path="/SelectBeverage"
             element={
               <SelectMenuScreen
-                menuList={beverageList}
-                selectedMenus={selectedMenus}
-                setSelectedMenus={setSelectedMenus}
+                menuList={menuList.filter((menu) => menu.type === "음료")}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
               />
             }
           />
@@ -71,13 +68,24 @@ function App() {
             path="/SelectSide"
             element={
               <SelectMenuScreen
-                menuList={sideList}
-                selectedMenus={selectedMenus}
-                setSelectedMenus={setSelectedMenus}
+                menuList={menuList.filter((menu) => menu.type === "사이드")}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
               />
             }
           />
-          <Route path="/OrderCheck" element={<OrderCheckScreen />} />
+          <Route
+            path="/OrderCheck"
+            element={
+              <OrderCheckScreen
+                menuList={menuList}
+                selectedList={selectedList}
+                setSelectedList={setSelectedList}
+                orderList={orderList}
+                setOrderList={setOrderList}
+              />
+            }
+          />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
           <Route
