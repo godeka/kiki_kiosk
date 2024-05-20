@@ -16,6 +16,7 @@ import EndScreen from "./components/EndScreen";
 const serverUrl = "http://43.203.235.200:8080";
 
 function App() {
+  const [selectedMenus, setSelectedMenus] = useState({}); // 선택한 메뉴 목록 (단계별)
   const [burgerList, setBurgerList] = useState([]);
   const [beverageList, setBeverageList] = useState([]);
   const [sideList, setSideList] = useState([]);
@@ -48,15 +49,33 @@ function App() {
           <Route path="/MenuType" element={<MenuTypeScreen />} />
           <Route
             path="/SelectBurger"
-            element={<SelectMenuScreen menuList={burgerList} />}
+            element={
+              <SelectMenuScreen
+                menuList={burgerList}
+                selectedMenus={selectedMenus}
+                setSelectedMenus={setSelectedMenus}
+              />
+            }
           />
           <Route
             path="/SelectBeverage"
-            element={<SelectMenuScreen menuList={beverageList} />}
+            element={
+              <SelectMenuScreen
+                menuList={beverageList}
+                selectedMenus={selectedMenus}
+                setSelectedMenus={setSelectedMenus}
+              />
+            }
           />
           <Route
             path="/SelectSide"
-            element={<SelectMenuScreen menuList={sideList} />}
+            element={
+              <SelectMenuScreen
+                menuList={sideList}
+                selectedMenus={selectedMenus}
+                setSelectedMenus={setSelectedMenus}
+              />
+            }
           />
           <Route path="/OrderCheck" element={<OrderCheckScreen />} />
           <Route path="/LastCheck" element={<LastCheckScreen />} />
