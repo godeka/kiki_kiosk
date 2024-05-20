@@ -49,6 +49,7 @@ export default function SelectMenuScreen({
               price={menu.price}
               img={menu.imageUrl}
               handleClick={() => handleClickMenu(menu)}
+              clickCount={selectedMenus[menu.id] || 0}
             />
           </Grid>
         ))}
