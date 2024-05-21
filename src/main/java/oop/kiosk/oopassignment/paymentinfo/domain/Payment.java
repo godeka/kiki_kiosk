@@ -30,6 +30,7 @@ public class Payment {
     @JoinColumn(name = "order_pk_id")
     private Order order;
 
+
     public Payment(Order order) {
         this.date = order.getOrderDate();
         this.totalPrice = order.getPrice() * order.getCount();

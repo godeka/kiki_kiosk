@@ -13,6 +13,8 @@ public class OrderResponse {
     private Long price;
     private Long menuId;
     private String orderDate;
+    private String paymentMethod;
+    private String inOutInfo;
 
     public OrderResponse(Order order) {
         this.orderNumber = order.getOrderNumber();
@@ -20,5 +22,7 @@ public class OrderResponse {
         this.price = order.getPrice();
         this.menuId = order.getMenu().getId();
         this.orderDate = order.getOrderDate().toString();
+        this.paymentMethod = order.getPaymentMethod();
+        this.inOutInfo = order.getInOutInfo();
     }
 }

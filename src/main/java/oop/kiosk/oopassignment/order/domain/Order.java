@@ -36,6 +36,12 @@ public class Order {
     @Column(nullable = false)
     private LocalDate orderDate;
 
+    @Column(nullable = false)
+    private String paymentMethod;
+
+    @Column(nullable = false)
+    private String inOutInfo;
+
     @ManyToOne
     @JoinColumn(name = "menu_id")
     private Menu menu;
@@ -46,5 +52,7 @@ public class Order {
         this.price = price;
         this.menu = menu;
         this.orderDate = orderDate;
+        this.paymentMethod = requestList.getPaymentMethod();
+        this.inOutInfo = requestList.getInOutInfo();
     }
 }

@@ -11,6 +11,8 @@ import java.util.List;
 public class OrderCreateRequestList {
     private Long orderNumber;
     private List<OrderCreateRequest> orderSheet;
+    private String paymentMethod;
+    private String inOutInfo;
 
     public List<OrderCreateRequest> getOrderSheet() {
         return orderSheet;
