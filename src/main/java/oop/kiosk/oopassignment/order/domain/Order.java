@@ -46,13 +46,13 @@ public class Order {
     @JoinColumn(name = "menu_id")
     private Menu menu;
 
-    public Order(OrderCreateRequestList requestList, OrderCreateRequest request, long price, Menu menu, LocalDate orderDate) {
-        this.orderNumber = requestList.getOrderNumber();
+    public Order(OrderCreateRequestList requestList, OrderCreateRequest request, long price, Menu menu, LocalDate orderDate, long orderNumber){
         this.count = request.getCount();
         this.price = price;
         this.menu = menu;
         this.orderDate = orderDate;
         this.paymentMethod = requestList.getPaymentMethod();
         this.inOutInfo = requestList.getInOutInfo();
+        this.orderNumber = orderNumber;
     }
 }

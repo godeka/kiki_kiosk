@@ -29,15 +29,22 @@ public class OrderService {
     public ResponseEntity<Long> saveOrder(OrderCreateRequestList requestList) {
         List<OrderCreateRequest> requests = requestList.getOrderSheet();
 
+        Long orderNumber = 0L;
+        if (orderRepository.count() == 0) {
+            orderNumber = 1L;
+        } else {
+            orderNumber = orderRepository.findTopByOrderByIdDesc().getOrderNumber() + 1;
+        }
+
         for(OrderCreateRequest request : requests){
             Menu menu = menuRepository.findById(request.getMenuId())
                     .orElseThrow();
-            Order order = new Order(requestList,request, menu.getPrice(), menu, LocalDate.now());
+            Order order = new Order(requestList,request, menu.getPrice(), menu, LocalDate.now(), orderNumber);
             orderRepository.save(order);
             paymentService.savePayment(order.getId());
         }
 
-        return ResponseEntity.ok(requestList.getOrderNumber());
+        return ResponseEntity.ok(orderNumber);
     }
 
     @Transactional

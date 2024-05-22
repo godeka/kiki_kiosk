@@ -9,7 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderCreateRequestList {
-    private Long orderNumber;
     private List<OrderCreateRequest> orderSheet;
     private String paymentMethod;
     private String inOutInfo;
