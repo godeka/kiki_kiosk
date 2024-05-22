@@ -7,7 +7,7 @@ import GoBackButton from "./button/GoBackButton";
 import BoxButton from "./button/BoxButton";
 import Question from "./Question";
 
-export default function InOutScreen() {
+export default function InOutScreen({ setInOutInfo }) {
   const navigate = useNavigate();
 
   return (
@@ -25,12 +25,24 @@ export default function InOutScreen() {
       </Question>
       <Grid container spacing={2}>
         <Grid item xs={6}>
-          <BoxButton text="매장" handleClick={() => navigate("/MenuType")}>
+          <BoxButton
+            text="매장"
+            handleClick={() => {
+              setInOutInfo("in");
+              navigate("/MenuType");
+            }}
+          >
             <Storefront style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>
         <Grid item xs={6}>
-          <BoxButton text="포장" handleClick={() => navigate("/MenuType")}>
+          <BoxButton
+            text="포장"
+            handleClick={() => {
+              setInOutInfo("out");
+              navigate("/MenuType");
+            }}
+          >
             <ExitToApp style={{ fontSize: "70px" }} />
           </BoxButton>
         </Grid>

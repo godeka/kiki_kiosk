@@ -19,6 +19,7 @@ function App() {
   const [orderList, setOrderList] = useState([]); // 전체 주문 목록 [ { menuId: 1, count: 2 }, ... ]
   const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
   const [menuList, setMenuList] = useState([]);
+  const [inOutInfo, setInOutInfo] = useState(""); // 매장/포장 : in/out
 
   useEffect(() => {
     // 모든 메뉴 가져오기
@@ -42,7 +43,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
-          <Route path="/InOut" element={<InOutScreen />} />
+          <Route
+            path="/InOut"
+            element={<InOutScreen setInOutInfo={setInOutInfo} />}
+          />
           <Route path="/MenuType" element={<MenuTypeScreen />} />
           <Route
             path="/SelectBurger"
@@ -91,13 +95,21 @@ function App() {
           <Route
             path="/MakeCashPayment"
             element={
-              <MakePaymentScreen paymentType="현금" orderList={orderList} />
+              <MakePaymentScreen
+                paymentType="현금"
+                inOutInfo={inOutInfo}
+                orderList={orderList}
+              />
             }
           />
           <Route
             path="/MakeCardPayment"
             element={
-              <MakePaymentScreen paymentType="카드" orderList={orderList} />
+              <MakePaymentScreen
+                paymentType="카드"
+                inOutInfo={inOutInfo}
+                orderList={orderList}
+              />
             }
           />
           <Route path="/End" element={<EndScreen />} />
