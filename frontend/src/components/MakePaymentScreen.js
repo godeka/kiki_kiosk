@@ -3,10 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { South } from "@mui/icons-material";
 
+import { postOrder } from "../api/ApiService";
 import GoBackButton from "./button/GoBackButton";
 import Question from "./Question";
-
-const serverUrl = "http://43.203.235.200:8080";
 
 export default function MakePaymentScreen({
   paymentMethod,
@@ -38,24 +37,8 @@ export default function MakePaymentScreen({
         position="fixed"
         top="70%"
         left={paymentMethod === "현금" ? "45%" : "65%"}
-        onClick={() => {
-          fetch(`${serverUrl}/api/order`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              orderSheet: orderList,
-              paymentMethod: paymentMethod === "현금" ? "cash" : "card",
-              inOutInfo: inOutInfo,
-            }),
-          })
-            .then((res) => {
-              res.json();
-            })
-            .then((data) => {
-              console.log(data);
-            });
+        onClick={async () => {
+          await postOrder(orderList, paymentMethod, inOutInfo);
           alert("결제 성공!");
 
           navigate("/End");
