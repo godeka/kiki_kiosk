@@ -96,7 +96,7 @@ function App() {
             path="/MakeCashPayment"
             element={
               <MakePaymentScreen
-                paymentType="현금"
+                paymentMethod="현금"
                 inOutInfo={inOutInfo}
                 orderList={orderList}
               />
@@ -106,7 +106,7 @@ function App() {
             path="/MakeCardPayment"
             element={
               <MakePaymentScreen
-                paymentType="카드"
+                paymentMethod="카드"
                 inOutInfo={inOutInfo}
                 orderList={orderList}
               />

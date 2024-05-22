@@ -9,7 +9,7 @@ import Question from "./Question";
 const serverUrl = "http://43.203.235.200:8080";
 
 export default function MakePaymentScreen({
-  paymentType,
+  paymentMethod,
   inOutInfo,
   orderList,
 }) {
@@ -30,14 +30,14 @@ export default function MakePaymentScreen({
         <br />
       </Question>
       <Typography sx={{ fontSize: "27px" }}>
-        {paymentType === "현금"
+        {paymentMethod === "현금"
           ? "현금을 아래 중앙의 투입구에 넣어주세요."
           : "카드를 아래 오른쪽의 투입구에 넣어주세요."}
       </Typography>
       <Box
         position="fixed"
         top="70%"
-        left={paymentType === "현금" ? "45%" : "65%"}
+        left={paymentMethod === "현금" ? "45%" : "65%"}
         onClick={() => {
           fetch(`${serverUrl}/api/order`, {
             method: "POST",
@@ -46,7 +46,7 @@ export default function MakePaymentScreen({
             },
             body: JSON.stringify({
               orderSheet: orderList,
-              paymentMethod: paymentType === "현금" ? "cash" : "card",
+              paymentMethod: paymentMethod === "현금" ? "cash" : "card",
               inOutInfo: inOutInfo,
             }),
           })
