@@ -90,11 +90,15 @@ function App() {
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
           <Route
             path="/MakeCashPayment"
-            element={<MakePaymentScreen paymentType="현금" />}
+            element={
+              <MakePaymentScreen paymentType="현금" orderList={orderList} />
+            }
           />
           <Route
             path="/MakeCardPayment"
-            element={<MakePaymentScreen paymentType="카드" />}
+            element={
+              <MakePaymentScreen paymentType="카드" orderList={orderList} />
+            }
           />
           <Route path="/End" element={<EndScreen />} />
         </Routes>

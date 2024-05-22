@@ -6,7 +6,13 @@ import { South } from "@mui/icons-material";
 import GoBackButton from "./button/GoBackButton";
 import Question from "./Question";
 
-export default function MakePaymentScreen({ paymentType }) {
+const serverUrl = "http://43.203.235.200:8080";
+
+export default function MakePaymentScreen({
+  paymentType,
+  inOutInfo,
+  orderList,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -32,7 +38,28 @@ export default function MakePaymentScreen({ paymentType }) {
         position="fixed"
         top="70%"
         left={paymentType === "현금" ? "45%" : "65%"}
-        onClick={() => navigate("/End")}
+        onClick={() => {
+          fetch(`${serverUrl}/api/order`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              orderSheet: orderList,
+              paymentMethod: paymentType === "현금" ? "cash" : "card",
+              inOutInfo: inOutInfo,
+            }),
+          })
+            .then((res) => {
+              res.json();
+            })
+            .then((data) => {
+              console.log(data);
+            });
+          alert("결제 성공!");
+
+          navigate("/End");
+        }}
       >
         <South style={{ fontSize: "50px" }} />
       </Box>
