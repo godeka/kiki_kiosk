@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Add, Paid } from "@mui/icons-material";
 
 import GoBackButton from "./button/GoBackButton";
 import BoxButton from "./button/BoxButton";
 import Question from "./Question";
 
-export default function LastCheckScreen() {
+export default function LastCheckScreen({ totalAmount }) {
   const navigate = useNavigate();
 
   return (
@@ -23,6 +23,14 @@ export default function LastCheckScreen() {
         <span style={{ color: "black" }}>더 주문</span>하시겠습니까, <br />
         아니면 <span style={{ color: "black" }}>결제</span>하시겠습니까?
       </Question>
+      <Typography
+        style={{
+          paddingBottom: "10px",
+          fontSize: "20px",
+        }}
+      >
+        결제할 금액: {totalAmount.current}원
+      </Typography>
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <BoxButton

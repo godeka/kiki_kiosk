@@ -35,6 +35,7 @@ export default function OrderCheckScreen({
   setSelectedList,
   orderList,
   setOrderList,
+  totalAmount,
 }) {
   const navigate = useNavigate();
 
@@ -52,6 +53,13 @@ export default function OrderCheckScreen({
     let newOrderList = [...orderList];
     newOrderList.push(...selectedList);
     setOrderList(newOrderList);
+
+    // 총 주문 금액 갱신
+    selectedList.forEach((menu) => {
+      const price = menuList.find((m) => m.id === menu.menuId).price;
+      totalAmount.current += menu.count * price;
+    });
+    console.log("총 금액", totalAmount.current);
 
     setSelectedList([]); // 선택한 메뉴 초기화
   };

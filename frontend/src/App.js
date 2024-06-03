@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,6 +15,7 @@ import MakePaymentScreen from "./components/MakePaymentScreen";
 import EndScreen from "./components/EndScreen";
 
 function App() {
+  const totalAmount = useRef(0); // 총 주문 금액
   const [orderList, setOrderList] = useState([]); // 전체 주문 목록 [ { menuId: 1, count: 2 }, ... ]
   const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
   const [menuList, setMenuList] = useState([]);
@@ -81,10 +82,14 @@ function App() {
                 setSelectedList={setSelectedList}
                 orderList={orderList}
                 setOrderList={setOrderList}
+                totalAmount={totalAmount}
               />
             }
           />
-          <Route path="/LastCheck" element={<LastCheckScreen />} />
+          <Route
+            path="/LastCheck"
+            element={<LastCheckScreen totalAmount={totalAmount} />}
+          />
           <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
           <Route
             path="/MakeCashPayment"
