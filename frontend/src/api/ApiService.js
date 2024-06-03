@@ -1,4 +1,4 @@
-const serverUrl = "http://43.203.235.200:8080";
+const serverUrl = "http://13.125.72.207:8080";
 
 // 메뉴 리스트 요청
 export const getAllMenu = (setMenuList) => {
