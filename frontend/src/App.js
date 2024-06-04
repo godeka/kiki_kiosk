@@ -1,4 +1,4 @@
-import CustomerPage from "./components/CustomerPage.js";
+import CustomerPage from "./components/customer/CustomerPage.js";
 
 function App() {
   return <CustomerPage />;

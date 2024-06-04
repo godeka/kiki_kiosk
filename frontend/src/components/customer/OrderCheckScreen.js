@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { East, West } from "@mui/icons-material";
 
-import GoBackButton from "./button/GoBackButton";
+import GoBackButton from "../button/GoBackButton";
 
 const sampleSelectedList = [
   { name: "키키버거", price: "5,000", img: "burger/basicBurger.png", num: 1 },

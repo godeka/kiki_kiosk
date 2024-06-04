@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { Container } from "@mui/material";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { getAllMenu } from "../api/ApiService.js";
+import { getAllMenu } from "../../api/ApiService.js";
 import WelcomeScreen from "./WelcomeScreen";
 import InOutScreen from "./InOutScreen";
 import MenuTypeScreen from "./MenuTypeScreen";
