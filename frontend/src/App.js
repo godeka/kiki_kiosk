@@ -8,7 +8,14 @@ import AdminPage from "./components/admin/AdminPage.js";
 function App() {
   const [isAdmin, setIsAdmin] = useState(true);
   const contents = isAdmin ? <AdminPage /> : <CustomerPage />;
-  return <Container>{contents}</Container>;
+  return (
+    <Container
+      className={isAdmin ? "admin-page" : "customer-page"}
+      disableGutters
+    >
+      {contents}
+    </Container>
+  );
 }
 
 export default App;
