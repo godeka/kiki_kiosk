@@ -11,6 +11,7 @@ export default function MakePaymentScreen({
   paymentMethod,
   inOutInfo,
   orderList,
+  initializeOrder,
 }) {
   const navigate = useNavigate();
 
@@ -43,6 +44,7 @@ export default function MakePaymentScreen({
             paymentMethod,
             inOutInfo
           );
+          initializeOrder();
           alert(`결제 성공!\n주문번호: ${orderNumber}`);
 
           navigate("/End");

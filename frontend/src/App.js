@@ -26,6 +26,12 @@ function App() {
     getAllMenu(setMenuList);
   }, []);
 
+  const initializeOrder = () => {
+    setSelectedList([]);
+    setOrderList([]);
+    totalAmount.current = 0;
+  };
+
   return (
     <Container
       sx={{
@@ -98,6 +104,7 @@ function App() {
                 paymentMethod="현금"
                 inOutInfo={inOutInfo}
                 orderList={orderList}
+                initializeOrder={initializeOrder}
               />
             }
           />
@@ -108,6 +115,7 @@ function App() {
                 paymentMethod="카드"
                 inOutInfo={inOutInfo}
                 orderList={orderList}
+                initializeOrder={initializeOrder}
               />
             }
           />
