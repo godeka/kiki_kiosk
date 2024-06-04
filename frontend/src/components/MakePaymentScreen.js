@@ -38,8 +38,12 @@ export default function MakePaymentScreen({
         top="70%"
         left={paymentMethod === "현금" ? "45%" : "65%"}
         onClick={async () => {
-          await postOrder(orderList, paymentMethod, inOutInfo);
-          alert("결제 성공!");
+          const orderNumber = await postOrder(
+            orderList,
+            paymentMethod,
+            inOutInfo
+          );
+          alert(`결제 성공!\n주문번호: ${orderNumber}`);
 
           navigate("/End");
         }}
