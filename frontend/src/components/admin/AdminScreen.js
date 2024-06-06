@@ -11,11 +11,10 @@ import {
   Tab,
 } from "@mui/material";
 
-import Login from "./Login";
 import MenuManagement from "./MenuManagement";
 import SalesManagement from "./SalesManagement";
 
-export default function AdminScreen({ setContents }) {
+export default function AdminScreen({ setLoggedIn }) {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabChange = (event, newValue) => {
@@ -33,7 +32,9 @@ export default function AdminScreen({ setContents }) {
           <Button
             color="inherit"
             onClick={() => {
-              setContents(<Login />);
+              // 로그아웃 요청
+
+              setLoggedIn(false);
             }}
           >
             로그아웃

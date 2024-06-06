@@ -22,7 +22,7 @@ function AdminPage({ setIsAdmin }) {
       <Button variant="outlined" onClick={() => setIsAdmin(false)}>
         고객 페이지로
       </Button>
-      {loggedIn ? <AdminScreen setContents={setContents} /> : contents}
+      {loggedIn ? <AdminScreen setLoggedIn={setLoggedIn} /> : contents}
     </Container>
   );
 }
