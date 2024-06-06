@@ -14,7 +14,7 @@ import PaymentMethodScreen from "./PaymentMethodScreen";
 import MakePaymentScreen from "./MakePaymentScreen";
 import EndScreen from "./EndScreen";
 
-function CustomerPage({ setIsAdmin }) {
+function CustomerPage({ setMode }) {
   const totalAmount = useRef(0); // 총 주문 금액
   const [orderList, setOrderList] = useState([]); // 전체 주문 목록 [ { menuId: 1, count: 2 }, ... ]
   const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
@@ -37,7 +37,7 @@ function CustomerPage({ setIsAdmin }) {
 
   return (
     <>
-      <Button variant="outlined" onClick={() => setIsAdmin(true)}>
+      <Button variant="outlined" onClick={() => setMode("home")}>
         관리자 페이지로
       </Button>
       <Container

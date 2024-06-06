@@ -1,28 +1,24 @@
 import { useState } from "react";
 
-import { Container, Button } from "@mui/material";
+import { Container, IconButton } from "@mui/material";
+import { ArrowBack } from "@mui/icons-material";
 
 import Login from "./Login.js";
 import AdminScreen from "./AdminScreen.js";
 
-function AdminPage({ setIsAdmin }) {
-  const [contents, setContents] = useState(<></>);
+function AdminPage({ setMode }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <Container>
-      <Button
-        variant="outlined"
-        onClick={() => {
-          setContents(<Login setLoggedIn={setLoggedIn} />);
-        }}
-      >
-        관리자 로그인
-      </Button>
-      <Button variant="outlined" onClick={() => setIsAdmin(false)}>
-        고객 페이지로
-      </Button>
-      {loggedIn ? <AdminScreen setLoggedIn={setLoggedIn} /> : contents}
+      <IconButton onClick={() => setMode("home")}>
+        <ArrowBack />
+      </IconButton>
+      {loggedIn ? (
+        <AdminScreen setLoggedIn={setLoggedIn} />
+      ) : (
+        <Login setLoggedIn={setLoggedIn} />
+      )}
     </Container>
   );
 }
