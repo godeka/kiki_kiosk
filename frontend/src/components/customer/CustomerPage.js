@@ -23,7 +23,10 @@ function CustomerPage({ setIsAdmin }) {
 
   useEffect(() => {
     // 모든 메뉴 가져오기
-    getAllMenu(setMenuList);
+    getAllMenu().then((data) => {
+      console.log(data);
+      setMenuList(data);
+    });
   }, []);
 
   const initializeOrder = () => {
