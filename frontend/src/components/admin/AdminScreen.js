@@ -13,6 +13,7 @@ import {
 
 import Login from "./Login";
 import MenuManagement from "./MenuManagement";
+import SalesManagement from "./SalesManagement";
 
 export default function AdminScreen({ setContents }) {
   const [tabIndex, setTabIndex] = useState(0);
@@ -48,12 +49,12 @@ export default function AdminScreen({ setContents }) {
           textColor="primary"
         >
           <Tab label="메뉴 관리" />
-          <Tab label="정산" />
+          <Tab label="매출 관리" />
         </Tabs>
       </Box>
       <Box sx={{ p: 3 }}>
         {tabIndex === 0 && <MenuManagement />}
-        {tabIndex === 1 && <Typography>정산 내용</Typography>}
+        {tabIndex === 1 && <SalesManagement />}
       </Box>
     </Container>
   );
