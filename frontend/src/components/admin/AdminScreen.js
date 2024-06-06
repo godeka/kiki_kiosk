@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 import Login from "./Login";
+import MenuManagement from "./MenuManagement";
 
 export default function AdminScreen({ setContents }) {
   const [tabIndex, setTabIndex] = useState(0);
@@ -51,7 +52,7 @@ export default function AdminScreen({ setContents }) {
         </Tabs>
       </Box>
       <Box sx={{ p: 3 }}>
-        {tabIndex === 0 && <Typography>메뉴 관리 내용</Typography>}
+        {tabIndex === 0 && <MenuManagement />}
         {tabIndex === 1 && <Typography>정산 내용</Typography>}
       </Box>
     </Container>
