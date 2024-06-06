@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { TextField, Button } from "@mui/material";
 
-export default function Login() {
+export default function Login({ setLoggedIn }) {
   const [passwd, setPasswd] = useState("");
 
   return (
@@ -10,7 +10,11 @@ export default function Login() {
       method="post"
       onSubmit={(e) => {
         e.preventDefault();
+
+        // 로그인 요청
         alert("로그인 버튼 클릭! 입력한 비밀번호: " + passwd);
+
+        setLoggedIn(true);
       }}
     >
       <TextField
