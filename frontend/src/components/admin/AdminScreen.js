@@ -22,7 +22,7 @@ export default function AdminScreen({ setLoggedIn }) {
   };
 
   return (
-    <Container>
+    <Container disableGutters>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" sx={{ flexGrow: 1 }}>

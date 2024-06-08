@@ -10,7 +10,7 @@ function AdminPage({ setMode }) {
   const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <Container>
+    <Container className="admin-page" disableGutters>
       <IconButton onClick={() => setMode("home")}>
         <ArrowBack />
       </IconButton>

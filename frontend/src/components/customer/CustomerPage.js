@@ -36,7 +36,7 @@ function CustomerPage({ setMode }) {
   };
 
   return (
-    <>
+    <Container className="customer-page" disableGutters>
       <Button variant="outlined" onClick={() => setMode("home")}>
         관리자 페이지로
       </Button>
@@ -130,7 +130,7 @@ function CustomerPage({ setMode }) {
           </Routes>
         </BrowserRouter>
       </Container>
-    </>
+    </Container>
   );
 }
 
