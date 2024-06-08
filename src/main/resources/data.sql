@@ -14,3 +14,4 @@ INSERT INTO menu (name, price, type, info, imageUrl) VALUES ('감자튀김', 200
 INSERT INTO menu (name, price, type, info, imageUrl) VALUES ('치즈볼', 2500, 'SIDE', '', 'side/cheeseBall.png');
 INSERT INTO menu (name, price, type, info, imageUrl) VALUES ('해시브라운', 2500, 'SIDE', '', 'side/hashBrown.png');
 INSERT INTO menu (name, price, type, info, imageUrl) VALUES ('샐러드', 5500, 'SIDE', '', 'side/salad.png');
+INSERT INTO registerTable(password) VALUES ('1234');
