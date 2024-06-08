@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { TextField, Button } from "@mui/material";
 
-export default function Login({ setLoggedIn }) {
+export default function LoginScreen({ setLoggedIn }) {
   const [passwd, setPasswd] = useState("");
 
   return (
