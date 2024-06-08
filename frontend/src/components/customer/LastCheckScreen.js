@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Box, Grid, Typography } from "@mui/material";
 import { Add, Paid } from "@mui/icons-material";
 
-import GoBackButton from "./button/GoBackButton";
-import BoxButton from "./button/BoxButton";
+import GoBackButton from "../button/GoBackButton";
+import BoxButton from "../button/BoxButton";
 import Question from "./Question";
 
 export default function LastCheckScreen({ totalAmount }) {

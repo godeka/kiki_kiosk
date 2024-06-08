@@ -3,8 +3,8 @@ import { useNavigate, useState } from "react-router-dom";
 import { Container, Typography, Grid, Box } from "@mui/material";
 import { East } from "@mui/icons-material";
 
-import GoBackButton from "./button/GoBackButton";
-import MenuButton from "./button/MenuButton";
+import GoBackButton from "../button/GoBackButton";
+import MenuButton from "../button/MenuButton";
 
 const sampleMenuList = [
   { name: "메뉴1", price: "5,000₩", img: "" },

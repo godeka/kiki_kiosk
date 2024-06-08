@@ -1,128 +1,64 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 
-import { Container } from "@mui/material";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Container, Button, Box } from "@mui/material";
 
-import { getAllMenu } from "./api/ApiService.js";
-import WelcomeScreen from "./components/WelcomeScreen";
-import InOutScreen from "./components/InOutScreen";
-import MenuTypeScreen from "./components/MenuTypeScreen";
-import SelectMenuScreen from "./components/SelectMenuScreen";
-import OrderCheckScreen from "./components/OrderCheckScreen";
-import LastCheckScreen from "./components/LastCheckScreen";
-import PaymentMethodScreen from "./components/PaymentMethodScreen";
-import MakePaymentScreen from "./components/MakePaymentScreen";
-import EndScreen from "./components/EndScreen";
+import CustomerPage from "./components/customer/CustomerPage.js";
+import AdminPage from "./components/admin/AdminPage.js";
 
 function App() {
-  const totalAmount = useRef(0); // 총 주문 금액
-  const [orderList, setOrderList] = useState([]); // 전체 주문 목록 [ { menuId: 1, count: 2 }, ... ]
-  const [selectedList, setSelectedList] = useState([]); // 단계별 선택 목록 [ { menuId: 1, count: 1 }, ... ]
-  const [menuList, setMenuList] = useState([]);
-  const [inOutInfo, setInOutInfo] = useState(""); // 매장/포장 : in/out
-
-  useEffect(() => {
-    // 모든 메뉴 가져오기
-    getAllMenu(setMenuList);
-  }, []);
-
-  const initializeOrder = () => {
-    setSelectedList([]);
-    setOrderList([]);
-    totalAmount.current = 0;
-  };
+  const [mode, setMode] = useState("home");
 
   return (
-    <Container
+    <Container disableGutters>
+      {mode === "home" && <Home setMode={setMode} />}
+      {mode === "admin" && <AdminPage setMode={setMode} />}
+      {mode === "customer" && <CustomerPage setMode={setMode} />}
+    </Container>
+  );
+}
+
+function Home({ setMode }) {
+  return (
+    <Box
       sx={{
-        textAlign: "center",
-        padding: "50px",
-        background: `linear-gradient(0deg, #FFFFFF, #FF1E97)`, // 그라데이션 배경
-        height: "100vh",
+        display: "flex",
+        justifyContent: "center", // 수평 중앙 정렬
+        alignItems: "center", // 수직 중앙 정렬
+        height: "100vh", // 전체 뷰포트 높이
       }}
     >
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<WelcomeScreen />} />
-          <Route
-            path="/InOut"
-            element={<InOutScreen setInOutInfo={setInOutInfo} />}
-          />
-          <Route path="/MenuType" element={<MenuTypeScreen />} />
-          <Route
-            path="/SelectBurger"
-            element={
-              <SelectMenuScreen
-                menuList={menuList.filter((menu) => menu.type === "버거")}
-                selectedList={selectedList}
-                setSelectedList={setSelectedList}
-              />
-            }
-          />
-          <Route
-            path="/SelectBeverage"
-            element={
-              <SelectMenuScreen
-                menuList={menuList.filter((menu) => menu.type === "음료")}
-                selectedList={selectedList}
-                setSelectedList={setSelectedList}
-              />
-            }
-          />
-          <Route
-            path="/SelectSide"
-            element={
-              <SelectMenuScreen
-                menuList={menuList.filter((menu) => menu.type === "사이드")}
-                selectedList={selectedList}
-                setSelectedList={setSelectedList}
-              />
-            }
-          />
-          <Route
-            path="/OrderCheck"
-            element={
-              <OrderCheckScreen
-                menuList={menuList}
-                selectedList={selectedList}
-                setSelectedList={setSelectedList}
-                orderList={orderList}
-                setOrderList={setOrderList}
-                totalAmount={totalAmount}
-              />
-            }
-          />
-          <Route
-            path="/LastCheck"
-            element={<LastCheckScreen totalAmount={totalAmount} />}
-          />
-          <Route path="/PaymentMethod" element={<PaymentMethodScreen />} />
-          <Route
-            path="/MakeCashPayment"
-            element={
-              <MakePaymentScreen
-                paymentMethod="현금"
-                inOutInfo={inOutInfo}
-                orderList={orderList}
-                initializeOrder={initializeOrder}
-              />
-            }
-          />
-          <Route
-            path="/MakeCardPayment"
-            element={
-              <MakePaymentScreen
-                paymentMethod="카드"
-                inOutInfo={inOutInfo}
-                orderList={orderList}
-                initializeOrder={initializeOrder}
-              />
-            }
-          />
-          <Route path="/End" element={<EndScreen />} />
-        </Routes>
-      </BrowserRouter>
-    </Container>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "220px", // 버튼 두 개와 여유 공간 포함한 너비
+        }}
+      >
+        <Button
+          variant="outlined"
+          sx={{
+            marginRight: "10px", // 버튼 사이 여백
+            wordBreak: "keep-all",
+          }}
+          onClick={() => {
+            setMode("admin");
+          }}
+        >
+          관리자 로그인
+        </Button>
+        <Button
+          variant="outlined"
+          sx={{
+            wordBreak: "keep-all",
+          }}
+          onClick={() => {
+            setMode("customer");
+          }}
+        >
+          고객 페이지로
+        </Button>
+      </Box>
+    </Box>
   );
 }
 

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { Box, Grid } from "@mui/material";
 import { KebabDining, LunchDining, WineBar } from "@mui/icons-material";
 
-import GoBackButton from "./button/GoBackButton";
+import GoBackButton from "../button/GoBackButton";
 import Question from "./Question";
-import BoxButton from "./button/BoxButton";
+import BoxButton from "../button/BoxButton";
 
 export default function MenuTypeScreen() {
   const navigate = useNavigate();

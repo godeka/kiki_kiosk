@@ -1,13 +1,8 @@
 const serverUrl = "http://13.125.72.207:8080";
 
 // 메뉴 리스트 요청
-export const getAllMenu = (setMenuList) => {
-  return fetch(`${serverUrl}/api/menu/all`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      setMenuList(data);
-    });
+export const getAllMenu = () => {
+  return fetch(`${serverUrl}/api/menu/all`).then((res) => res.json());
 };
 
 // 주문하기
