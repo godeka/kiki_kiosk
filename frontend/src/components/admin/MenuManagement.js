@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Container, Grid, Button, Typography } from "@mui/material";
 
-import { getAllMenu } from "../../api/ApiService.js";
+import { getAllMenu } from "../../api/CustomerApi.js";
 import MenuItem from "./MenuItem.js";
 
 export default function MenuManagement() {
