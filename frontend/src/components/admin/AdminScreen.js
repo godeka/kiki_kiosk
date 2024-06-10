@@ -11,6 +11,8 @@ import {
   Tab,
 } from "@mui/material";
 
+import { logout } from "../../api/AdminApi";
+
 import MenuManagement from "./MenuManagement";
 import SalesManagement from "./SalesManagement";
 
@@ -33,8 +35,9 @@ export default function AdminScreen({ setLoggedIn }) {
             color="inherit"
             onClick={() => {
               // 로그아웃 요청
-
-              setLoggedIn(false);
+              logout().then(() => {
+                setLoggedIn(false);
+              });
             }}
           >
             로그아웃
