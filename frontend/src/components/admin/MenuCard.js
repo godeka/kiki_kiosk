@@ -1,6 +1,6 @@
 import { Box, Typography, Avatar, Button, ButtonGroup } from "@mui/material";
 
-export default function MenuItem({
+export default function MenuCard({
   name,
   image,
   price,

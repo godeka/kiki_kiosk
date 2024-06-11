@@ -4,7 +4,7 @@ import { Container, Grid, Button, Typography } from "@mui/material";
 
 import { getAllMenu } from "../../api/CustomerApi.js";
 import { deleteMenu, soldoutMenu } from "../../api/AdminApi.js";
-import MenuItem from "./MenuItem.js";
+import MenuCard from "./MenuCard.js";
 
 export default function MenuManagement() {
   const [menuList, setMenuList] = useState([]);
@@ -41,7 +41,7 @@ export default function MenuManagement() {
       <Grid container spacing={2}>
         {menuList.map((menu, index) => (
           <Grid item key={index} xs={4} style={{ padding: "10px" }}>
-            <MenuItem
+            <MenuCard
               name={menu.name}
               image={menu.imageUrl}
               price={menu.price}
