@@ -4,9 +4,12 @@ export default function MenuItem({
   name,
   image,
   price,
+  soldOut,
   handleDeleteMenu,
   handleSoldoutMenu,
 }) {
+  let backgroundColor = soldOut ? "gray" : "white";
+
   return (
     <Box
       sx={{
@@ -14,7 +17,7 @@ export default function MenuItem({
         height: "160px",
         border: "2px solid black",
         borderRadius: "15px",
-        backgroundColor: "white",
+        backgroundColor: backgroundColor,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-around",

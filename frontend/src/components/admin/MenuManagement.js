@@ -26,7 +26,11 @@ export default function MenuManagement() {
 
   const handleSoldoutMenu = (menuId) => {
     soldoutMenu(menuId).then(() => {
-      // 메뉴 품절 표시
+      // 메뉴 다시 가져오기
+      getAllMenu().then((data) => {
+        console.log(data);
+        setMenuList(data);
+      });
     });
   };
 
@@ -41,6 +45,7 @@ export default function MenuManagement() {
               name={menu.name}
               image={menu.imageUrl}
               price={menu.price}
+              soldOut={menu.soldOut}
               handleDeleteMenu={() => handleDeleteMenu(menu.id)}
               handleSoldoutMenu={() => handleSoldoutMenu(menu.id)}
             />
