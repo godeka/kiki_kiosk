@@ -24,6 +24,20 @@ export const logout = () => {
   });
 };
 
+// 관리자 비밀번호 변경
+export const changePassword = (oldPasswd, newPasswd) => {
+  return fetch(`${serverUrl}/api/password-change`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      pastPassword: oldPasswd,
+      currentPassword: newPasswd,
+    }),
+  });
+};
+
 // 메뉴 등록
 export const addMenu = (menu) => {
   return fetch(`${serverUrl}/api/menu`, {
