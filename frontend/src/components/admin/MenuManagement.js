@@ -107,7 +107,11 @@ function AddMenuForm({ setMenuList }) {
   };
 
   return (
-    <form method="post" onSubmit={handleAddMenu}>
+    <form
+      method="post"
+      onSubmit={handleAddMenu}
+      style={{ marginBottom: "50px" }}
+    >
       <Typography sx={{ marginY: "20px" }}>메뉴 추가</Typography>
       <FormControl sx={{ minWidth: "100px" }}>
         <InputLabel id="select-label">메뉴 타입</InputLabel>
