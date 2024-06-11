@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Container, IconButton } from "@mui/material";
 import { ArrowBack } from "@mui/icons-material";
 
-import Login from "./Login.js";
+import LoginScreen from "./LoginScreen.js";
 import AdminScreen from "./AdminScreen.js";
 
 function AdminPage({ setMode }) {
@@ -17,7 +17,7 @@ function AdminPage({ setMode }) {
       {loggedIn ? (
         <AdminScreen setLoggedIn={setLoggedIn} />
       ) : (
-        <Login setLoggedIn={setLoggedIn} />
+        <LoginScreen setLoggedIn={setLoggedIn} />
       )}
     </Container>
   );

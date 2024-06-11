@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import { TextField, Button } from "@mui/material";
 
-export default function Login({ setLoggedIn }) {
+import { login } from "../../api/AdminApi";
+
+export default function LoginScreen({ setLoggedIn }) {
   const [passwd, setPasswd] = useState("");
 
   return (
@@ -12,9 +14,14 @@ export default function Login({ setLoggedIn }) {
         e.preventDefault();
 
         // 로그인 요청
-        alert("로그인 버튼 클릭! 입력한 비밀번호: " + passwd);
-
-        setLoggedIn(true);
+        login(passwd).then((response) => {
+          if (response.status === 200) {
+            setLoggedIn(true);
+            alert("로그인 성공!");
+          } else {
+            alert("로그인 실패! \n비밀번호를 확인해주세요.");
+          }
+        });
       }}
     >
       <TextField

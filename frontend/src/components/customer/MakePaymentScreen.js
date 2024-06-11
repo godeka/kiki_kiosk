@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
 import { South } from "@mui/icons-material";
 
-import { postOrder } from "../../api/ApiService";
+import { postOrder } from "../../api/CustomerApi";
 import GoBackButton from "../button/GoBackButton";
 import Question from "./Question";
 
