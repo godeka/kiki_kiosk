@@ -23,3 +23,23 @@ export const logout = () => {
     },
   });
 };
+
+// 메뉴 삭제
+export const deleteMenu = (menuId) => {
+  return fetch(`${serverUrl}/api/menu?menuId=${menuId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+// 메뉴 품절처리
+export const soldoutMenu = (menuId) => {
+  return fetch(`${serverUrl}/api/menu?menuId=${menuId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
