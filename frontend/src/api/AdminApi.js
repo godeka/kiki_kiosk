@@ -68,3 +68,17 @@ export const soldoutMenu = (menuId) => {
     },
   });
 };
+
+// 일일 매출 요청
+export const getDailySales = (date) => {
+  return fetch(`${serverUrl}/api/payment/day?date=${date}`).then((res) =>
+    res.json()
+  );
+};
+
+// 월별 매출 요청
+export const getMonthlySales = (date) => {
+  return fetch(`${serverUrl}/api/payment/month?date=${date}`).then((res) =>
+    res.json()
+  );
+};
