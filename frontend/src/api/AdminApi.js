@@ -24,6 +24,17 @@ export const logout = () => {
   });
 };
 
+// 메뉴 등록
+export const addMenu = (menu) => {
+  return fetch(`${serverUrl}/api/menu`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(menu),
+  });
+};
+
 // 메뉴 삭제
 export const deleteMenu = (menuId) => {
   return fetch(`${serverUrl}/api/menu?menuId=${menuId}`, {
